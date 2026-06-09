@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<title>Contact Form Modal</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Inter,sans-serif;
+}
+
+body{
+
+background:linear-gradient(135deg,#09090b,#18181b,#27272a);
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+
+}
+
+.openModal{
+
+padding:18px 38px;
+border:none;
+border-radius:50px;
+background:linear-gradient(90deg,#6366f1,#8b5cf6);
+color:#fff;
+font-size:18px;
+font-weight:600;
+cursor:pointer;
+transition:.3s;
+
+}
+
+.openModal:hover{
+
+transform:translateY(-3px);
+
+}
+
+.modal{
+
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+display:none;
+justify-content:center;
+align-items:center;
+z-index:999;
+
+}
+
+.overlay{
+
+position:absolute;
+width:100%;
+height:100%;
+background:rgba(0,0,0,.65);
+backdrop-filter:blur(8px);
+
+}
+
+.dialog{
+
+position:relative;
+width:750px;
+max-width:95%;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(25px);
+border:1px solid rgba(255,255,255,.12);
+border-radius:24px;
+padding:35px;
+color:white;
+animation:popup .35s;
+
+}
+
+@keyframes popup{
+
+from{
+
+opacity:0;
+transform:translateY(30px);
+
+}
+
+to{
+
+opacity:1;
+transform:translateY(0);
+
+}
+
+}
+
+.close{
+
+position:absolute;
+top:18px;
+right:20px;
+font-size:28px;
+cursor:pointer;
+
+}
+
+h1{
+
+font-size:34px;
+margin-bottom:10px;
+
+}
+
+.subtitle{
+
+opacity:.8;
+margin-bottom:25px;
+line-height:1.6;
+
+}
+
+.grid{
+
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+
+}
+
+input,
+select,
+textarea{
+
+width:100%;
+padding:15px;
+margin-top:15px;
+border:none;
+outline:none;
+border-radius:12px;
+background:rgba(255,255,255,.08);
+color:white;
+font-size:15px;
+
+}
+
+select{
+
+color:white;
+
+}
+
+option{
+
+color:black;
+
+}
+
+textarea{
+
+height:140px;
+resize:none;
+
+}
+
+input::placeholder,
+textarea::placeholder{
+
+color:#d4d4d8;
+
+}
+
+.submit{
+
+margin-top:20px;
+width:100%;
+padding:16px;
+border:none;
+border-radius:12px;
+background:linear-gradient(90deg,#6366f1,#8b5cf6);
+font-size:17px;
+font-weight:600;
+color:white;
+cursor:pointer;
+
+}
+
+.submit:hover{
+
+opacity:.95;
+
+}
+
+#success{
+
+display:none;
+text-align:center;
+padding:40px;
+
+}
+
+.check{
+
+width:90px;
+height:90px;
+margin:auto;
+border-radius:50%;
+background:#22c55e;
+display:flex;
+justify-content:center;
+align-items:center;
+font-size:42px;
+margin-bottom:20px;
+
+}
+
+#success h2{
+
+margin-bottom:10px;
+
+}
+
+#success p{
+
+opacity:.8;
+
+}
+
+@media(max-width:700px){
+
+.grid{
+
+grid-template-columns:1fr;
+
+}
+
+.dialog{
+
+padding:25px;
+
+}
+
+h1{
+
+font-size:28px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<button class="openModal">
+Let's Talk
+</button>
+
+<div class="modal" id="modal">
+
+<div class="overlay"></div>
+
+<div class="dialog">
+
+<div class="close">
+✕
+</div>
+
+<div id="formContainer">
+
+<h1>
+Let's Build Something Amazing
+</h1>
+
+<p class="subtitle">
+Tell us about your idea and we'll get back to you shortly.
+</p>
+
+<form id="contactForm">
+
+<div class="grid">
+
+<input
+type="text"
+id="name"
+placeholder="Your Name"
+required>
+
+<input
+type="email"
+id="email"
+placeholder="Email Address"
+required>
+
+<input
+type="text"
+id="phone"
+placeholder="Phone / WhatsApp"
+required>
+
+<input
+type="text"
+id="location"
+placeholder="City, State, Country">
+
+</div>
+
+<select
+id="service"
+required>
+
+<option value="">
+Select Service
+</option>
+
+<option value="Mobile App Design">
+Mobile App Design (iOS, Android & Web Applications)
+</option>
+
+<option value="Website Design">
+Website Design (Business, Portfolio, E-commerce & Landing Pages)
+</option>
+
+<option value="Logo & Branding">
+Logo & Branding (Logo Design, Brand Identity & Guidelines)
+</option>
+
+<option value="3D Design & Animation">
+3D Design & Animation (Interactive 3D, Product Visuals & Motion Graphics)
+</option>
+
+<option value="I'm Not Sure Yet">
+I'm Not Sure Yet (Let's discuss your requirements)
+</option>
+
+</select>
+
+<textarea
+id="project"
+placeholder="Tell us about your project..."
+required></textarea>
+
+<button
+class="submit"
+type="submit"
+id="submitBtn">
+
+Send Inquiry
+
+</button>
+
+</form>
+
+</div>
+
+<div id="success">
+
+<div class="check">
+
+✓
+
+</div>
+
+<h2>
+Thank You!
+</h2>
+
+<p>
+Your inquiry has been submitted successfully.
+We'll contact you soon.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<script>
+
+const modal=document.getElementById("modal");
+
+document.querySelector(".openModal").onclick=()=>{
+
+modal.style.display="flex";
+
+}
+
+document.querySelector(".close").onclick=()=>{
+
+modal.style.display="none";
+
+}
+
+document.querySelector(".overlay").onclick=()=>{
+
+modal.style.display="none";
+
+}
+
+document.getElementById("contactForm").addEventListener("submit",function(e){
+
+e.preventDefault();
+
+const btn=document.getElementById("submitBtn");
+
+btn.innerHTML="Submitting...";
+btn.disabled=true;
+
+const data=new FormData();
+
+data.append("entry.1011206859",document.getElementById("name").value);
+
+data.append("entry.783846922",document.getElementById("email").value);
+
+data.append("entry.599036847",document.getElementById("phone").value);
+
+data.append("entry.1381747869",document.getElementById("location").value);
+
+data.append("entry.1396347419",document.getElementById("project").value);
+
+data.append("entry.2022060374",document.getElementById("service").value);
+
+fetch(
+
+"https://docs.google.com/forms/d/e/1FAIpQLScN0Si3hmUFVoW-BLuKIEXGFy5Qh3fT_tERlUv4_ikXHliXnA/formResponse",
+
+{
+
+method:"POST",
+
+mode:"no-cors",
+
+body:data
+
+}
+
+)
+
+.then(()=>{
+
+document.getElementById("formContainer").style.display="none";
+
+document.getElementById("success").style.display="block";
+
+})
+
+.catch(()=>{
+
+alert("Submission failed.");
+
+btn.innerHTML="Send Inquiry";
+
+btn.disabled=false;
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
